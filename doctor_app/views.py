@@ -5,11 +5,5 @@ from django.http import HttpResponse
 
 
 def index(request):
-    html = '''
-    <html>
-    <body>
-    <h2>Hello</h2>
-    </body>
-    </html>
-    '''
-    return HttpResponse(html)
+
+    return render(request, 'index.html')
