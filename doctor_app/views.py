@@ -1,29 +1,30 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from . import forms
 
 # Create your views here.
 
 
 def index(request):
-
-    return render(request, 'index.html')
+    data = {'page': 'Home', 'home': True}
+    return render(request, 'index.html', context=data)
 
 
 def about(request):
-
-    return render(request, 'about.html')
+    data = {'page': 'About', 'about': True}
+    return render(request, 'about.html', context=data)
 
 
 def blog(request):
-
-    return render(request, 'blog.html')
+    data = {'page': 'Blog', 'blog': True}
+    return render(request, 'blog.html', context=data)
 
 
 def services(request):
-
-    return render(request, 'services.html')
+    data = {'page': 'Services', 'services': True}
+    return render(request, 'services.html', context=data)
 
 
 def contact(request):
-
-    return render(request, 'contact.html')
+    data = {'page': 'Contact', 'contact': True}
+    return render(request, 'contact.html', context=data)
