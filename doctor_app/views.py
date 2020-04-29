@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from . import forms
+from .models import Service, FAQ, ClientTestimonial, Blog
+import datetime
 
 # Create your views here.
 
@@ -11,17 +13,22 @@ def index(request):
 
 
 def about(request):
-    data = {'page': 'About', 'about': True}
+    testimonials_list = ClientTestimonial.objects.order_by('client_name')
+    data = {'page': 'About', 'about': True, 'testimonials': testimonials_list}
     return render(request, 'about.html', context=data)
 
 
 def blog(request):
-    data = {'page': 'Blog', 'blog': True}
+    blogs_list = Blog.objects.order_by('-posted_date')
+    data = {'page': 'Blog', 'blog': True, 'blogs': blogs_list}
     return render(request, 'blog.html', context=data)
 
 
 def services(request):
-    data = {'page': 'Services', 'services': True}
+    services_list = Service.objects.order_by('service_heading')
+    faqs_list = FAQ.objects.order_by('question')
+    data = {'page': 'Services', 'services': True,
+            'services': services_list, 'faqs': faqs_list}
     return render(request, 'services.html', context=data)
 
 

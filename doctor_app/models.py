@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.apps import apps
 
 # Create your models here.
 
@@ -18,7 +19,7 @@ class ClientTestimonial(models.Model):
     client_testimonial = models.TextField(
         verbose_name='Client testimonial', blank=True)
     client_picture = models.ImageField(
-        verbose_name='Client picture', blank=True)
+        verbose_name='Client picture', upload_to='clients/', blank=True)
 
     def __str__(self):
         return self.client_name
@@ -52,8 +53,11 @@ class Blog(models.Model):
         max_length=20, verbose_name='Blog topic', blank=True)
     blog_content = models.TextField(verbose_name='Blog content', blank=True)
     blog_picture = models.ImageField(
-        verbose_name='Blog picture', null=True, blank=True)
+        verbose_name='Blog picture', upload_to='blogs/', null=True, blank=True)
     posted_date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.blog_title
 
 
 class Appointment(models.Model):

@@ -111,33 +111,19 @@
                 <div class="test_slider_container">
                     <div class="owl-carousel owl-theme test_slider">
 
-                        <!-- Slide -->
+                        {% for testimonial in testimonials %}
                         <div class="owl-item">
                             <div class="test_item text-center">
                                 <div class="test_text">
-                                    <p>Dr. Imran Adeel did my Hair Transplant Surgery in 2018 and so far I'm much satisfied with my result. In short span of time, my hair regrew, better than they were before.</p>
+                                    <p>{{testimonial.client_testimonial}}</p>
                                 </div>
                                 <div class="test_info d-flex flex-row align-items-center justify-content-center">
-                                    <div class="test_image"><img src={% static "images/client1.jpg" %} alt=""></div>
-                                    <div class="test_text">Sajjad Shah, <span>Patient</span></div>
+                                    <div class="test_image"><img src="{{testimonial.client_picture.url}}" alt=""></div>
+                                    <div class="test_text">{{testimonial.client_name}}, <span>Patient</span></div>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Slide -->
-                        <div class="owl-item">
-                            <div class="test_item text-center">
-                                <div class="test_text">
-                                    <p></p>
-                                </div>
-                                <div class="test_info d-flex flex-row align-items-center justify-content-center">
-                                    <div class="test_image"><img src="" alt=""></div>
-                                    <div class="test_text"> <span> </span></div>
-                                </div>
-                            </div>
-                        </div>
-
-
+                        {% endfor %}
                     </div>
                 </div>
             </div>

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% extends "base.html" %} {% load staticfiles %} {% block page_content %}
-
+{% load custom_filters %}
 <!-- Home -->
 
 <div class="home d-flex flex-column align-items-start justify-content-end">
@@ -17,7 +17,7 @@
         <div class="col">
           <div class="home_content">
             <div class="home_title">Blog</div>
-            <div class="home_text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+            <div class="home_text">Short articles on different surgeries and treatments in Plastic Surgery</div>
           </div>
         </div>
       </div>
@@ -32,91 +32,30 @@
     <div class="row">
       <div class="col">
         <!-- Blog Post -->
+        
+        {% for blog in blogs %}
         <div class="blog_post">
-          <div class="blog_post_image"><img src={% static "images/blog_1.jpg" %} alt="" /></div>
+          <div class="blog_post_image"><img src="{{blog.blog_picture.url}}" %} alt="" /></div>
           <div class="blog_post_date d-flex flex-column align-items-center justify-content-center">
-            <div class="date_day">19</div>
-            <div class="date_month">June</div>
-            <div class="date_year">2018</div>
+            <div class="date_day">{{ blog.posted_date|day }}</div>
+            <div class="date_month">{{ blog.posted_date|month }}</div>
+            <div class="date_year">{{ blog.posted_date|year }}</div>
           </div>
-          <div class="blog_post_title"><a href="#">5 Reasons why you should choose a plastic surgeon</a></div>
+          <div class="blog_post_title"><a href="#">{{blog.blog_title}}</a></div>
           <div class="blog_post_info">
             <ul class="d-flex flex-row align-items-center justify-content-center">
-              <li>by <a href="#">Dr. James Smith</a></li>
-              <li>in <a href="#">Surgery</a></li>
-              <li><a href="#">2 Comments</a></li>
+              <li>by <a href="#">{{"Dr. "|add:blog.blog_author.first_name|add:" "|add:blog.blog_author.last_name}}</a></li>
+              <li>in <a href="#">{{blog.blog_topic}}</a></li>
             </ul>
           </div>
           <div class="blog_post_text text-center">
             <p>
-              Odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non
-              elementum urna. Cras sit amet sapien aliquam, fermentum dolor non, blandit purus. Donec blandit purus
-              vitae eros fringilla accumsan. Nunc feugiat purus et posuere ornare. Vivamus molestie sem pretium ligula
-              efficitur, vitae auctor tortor vestibulum. Ut interdum ante neque, sed vestibulum lorem dictum quis.
+              {{blog.blog_content}}
             </p>
           </div>
-          <div class="blog_post_button text-center">
-            <div class="button button_1 ml-auto mr-auto"><a href="#">read more</a></div>
-          </div>
         </div>
-
-        <!-- Blog Post -->
-        <div class="blog_post">
-          <div class="blog_post_image"><img src={% static "images/blog_2.jpg" %} alt="" /></div>
-          <div class="blog_post_date d-flex flex-column align-items-center justify-content-center">
-            <div class="date_day">19</div>
-            <div class="date_month">June</div>
-            <div class="date_year">2018</div>
-          </div>
-          <div class="blog_post_title"><a href="#">A new revolutionary method to plastic surgery</a></div>
-          <div class="blog_post_info">
-            <ul class="d-flex flex-row align-items-center justify-content-center">
-              <li>by <a href="#">Dr. James Smith</a></li>
-              <li>in <a href="#">Surgery</a></li>
-              <li><a href="#">2 Comments</a></li>
-            </ul>
-          </div>
-          <div class="blog_post_text text-center">
-            <p>
-              Odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non
-              elementum urna. Cras sit amet sapien aliquam, fermentum dolor non, blandit purus. Donec blandit purus
-              vitae eros fringilla accumsan. Nunc feugiat purus et posuere ornare. Vivamus molestie sem pretium ligula
-              efficitur, vitae auctor tortor vestibulum. Ut interdum ante neque, sed vestibulum lorem dictum quis.
-            </p>
-          </div>
-          <div class="blog_post_button text-center">
-            <div class="button button_1 ml-auto mr-auto"><a href="#">read more</a></div>
-          </div>
-        </div>
-
-        <!-- Blog Post -->
-        <div class="blog_post">
-          <div class="blog_post_image"><img src={% static "images/blog_3.jpg" %} alt="" /></div>
-          <div class="blog_post_date d-flex flex-column align-items-center justify-content-center">
-            <div class="date_day">19</div>
-            <div class="date_month">June</div>
-            <div class="date_year">2018</div>
-          </div>
-          <div class="blog_post_title"><a href="#">Are you in need for a liposuction?</a></div>
-          <div class="blog_post_info">
-            <ul class="d-flex flex-row align-items-center justify-content-center">
-              <li>by <a href="#">Dr. James Smith</a></li>
-              <li>in <a href="#">Surgery</a></li>
-              <li><a href="#">2 Comments</a></li>
-            </ul>
-          </div>
-          <div class="blog_post_text text-center">
-            <p>
-              Odio ultrices ut. Etiam ac erat ut enim maximus accumsan vel ac nisl. Duis feugiat bibendum orci, non
-              elementum urna. Cras sit amet sapien aliquam, fermentum dolor non, blandit purus. Donec blandit purus
-              vitae eros fringilla accumsan. Nunc feugiat purus et posuere ornare. Vivamus molestie sem pretium ligula
-              efficitur, vitae auctor tortor vestibulum. Ut interdum ante neque, sed vestibulum lorem dictum quis.
-            </p>
-          </div>
-          <div class="blog_post_button text-center">
-            <div class="button button_1 ml-auto mr-auto"><a href="#">read more</a></div>
-          </div>
-        </div>
+        {% endfor %}
+     
       </div>
     </div>
   </div>
