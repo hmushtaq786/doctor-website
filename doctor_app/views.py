@@ -33,5 +33,25 @@ def services(request):
 
 
 def contact(request):
-    data = {'page': 'Contact', 'contact': True}
+    form = forms.AppointmentForm()
+    html = None
+    if request.method == 'POST':
+        form = forms.AppointmentForm(request.POST)
+        if form.is_valid():
+            form.save(commit=True)
+            request.method = "GET2"
+
+            return contact(request)
+
+    if request.method == 'GET2':
+        html = """
+        <div id="myModal" class="modal" style="display:block;">
+                    <div class="modal-content" style="top: 200px;">
+                      <span class="close">&times;</span>
+                      <p>Appointment scheduled for given time.</p>
+                    </div>
+        </div>
+        """
+
+    data = {'page': 'Contact', 'contact': True, 'form': form, 'html': html}
     return render(request, 'contact.html', context=data)

@@ -29,49 +29,19 @@
 				<div class="col-lg-6">
 					<div class="contact_form_container">
 						<div class="contact_form_title">Make an Appointment</div>
-						<form action="#" class="contact_form" id="contact_form">
+						<form method="POST" class="contact_form" id="contact_form">
+							
 							<div class="d-flex flex-row align-items-start justify-content-between flex-wrap">
-								<input type="text" class="contact_input" placeholder="Your Name" required="required">
-								<input type="email" class="contact_input" placeholder="Your E-mail" required="required">
-								<input type="tel" class="contact_input" placeholder="Your Phone" required="required">
-								<select class="contact_select contact_input" required>
-									<option disabled="" selected="" value="">Service</option>
-									<option>Abdominoplasty</option>
-									<option>Acne Scars Treatment</option>
-									<option>Blepharoplasty</option>
-									<option>Botox injections</option>
-									<option>Breast Augmentation</option>
-									<option>Breast reduction surgery</option>
-									<option>Burn Wound Management</option>
-									<option>Cleft Lip & Palate Surgery</option>
-									<option>Cosmetic & Reconstructive Surgery</option>
-									<option>Facelift</option>
-									<option>Facial Fillers</option>
-									<option>Facial Rejuvenation</option>
-									<option>Gynecomastia or Male Breast reduction surgery</option>
-									<option>Hair Transplant</option>
-									<option>Lip Augmentation</option>
-									<option>Lip Reduction Surgery</option>
-									<option>Liposuction</option>
-									<option>PRP Therapy</option>
-									<option>Rhinoplasty</option>
-									<option>Skin Whitening Injections</option>
-								</select>
-								<select class="contact_select contact_input"required="required">
-										<option disabled="" selected="">Time</option>
-										<option>Morning</option>
-										<option>Evening</option>
-									</select>
-								<input type="text" id="datepicker" class="contact_input datepicker" placeholder="Date" required="required">
+								{{form}}
+								{% csrf_token %}
 							</div>
-							<button id="myBtn" class="button button_1 contact_button trans_200">make an appointment</button>
 
-							<div id="myModal" class="modal">
-								<div class="modal-content">
-									<span class="close">&times;</span>
-									<p>This feature is not yet available. Sorry for inconvenience.</p>
-								</div>
-							</div>
+
+							<button type="submit" id="myBtn" class="button button_1 contact_button trans_200">make an appointment</button>
+
+							{% if html %}
+							  {{html|safe}}
+							{% endif %}
 
 						</form>
 					</div>

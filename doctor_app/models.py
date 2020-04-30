@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.apps import apps
+import datetime
 
 # Create your models here.
 
@@ -66,7 +67,8 @@ class Appointment(models.Model):
     email = models.EmailField(verbose_name='Email', blank=True)
     phone_number = models.CharField(
         max_length=50, verbose_name='Phone number', blank=True)
-    service = models.ForeignKey(
-        Service, null=True, verbose_name='Service', on_delete=models.SET_NULL)
-    time = models.TimeField(verbose_name='Time', blank=True)
+    time = models.CharField(max_length=20, verbose_name='Time', blank=True)
     date = models.DateField(verbose_name='Date', blank=True)
+
+    def __str__(self):
+        return self.name + " | "+self.date.strftime("%b %d %Y")
