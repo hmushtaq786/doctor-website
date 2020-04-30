@@ -1,3 +1,4 @@
 *.py linguist-language=Python
 static/plugins/* linguist-vendored
+static/css/* linguist-vendored
 templates/* linguist-vendored
