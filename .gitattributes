@@ -1,2 +1,2 @@
 *.py linguist-language=Python
-static/css/* linguist-vendored
+static/* linguist-vendored
