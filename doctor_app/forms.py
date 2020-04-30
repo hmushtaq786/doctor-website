@@ -1,5 +1,5 @@
 from django import forms
-from .models import Appointment
+from .models import Appointment, Subscriber
 
 
 class AppointmentForm(forms.ModelForm):
@@ -30,16 +30,11 @@ class AppointmentForm(forms.ModelForm):
         fields = '__all__'
 
 
-# <input type="text" class="contact_input" placeholder="Your Name" required="required">
-# 								<input type="email" class="contact_input" placeholder="Your E-mail" required="required">
-# 								<input type="tel" class="contact_input" placeholder="Your Phone" required="required">
-# 								<select class="contact_select contact_input" required>
-# 									<option disabled="" selected="" value="">Service</option>
-# 									<option>Abdominoplasty</option>
-# 								</select>
-# 								<select class="contact_select contact_input"required="required">
-# 										<option disabled="" selected="">Time</option>
-# 										<option>Morning</option>
-# 										<option>Evening</option>
-# 									</select>
-# 								<input type="text" id="datepicker" class="contact_input datepicker" placeholder="Date" required="required">
+class SubscriberForm(forms.ModelForm):
+
+    email = forms.EmailField(label=False, required=True, widget=forms.TextInput(
+        attrs={'class': 'newsletter_input', 'placeholder': 'Your email', 'required': "required"}))
+
+    class Meta:
+        model = Subscriber
+        fields = '__all__'

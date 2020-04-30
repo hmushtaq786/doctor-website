@@ -159,55 +159,20 @@
             <div class="col-lg-6 intro_col">
               <div class="intro_form_container">
                 <div class="intro_form_title">Make an Appointment</div>
-                <form action="" class="intro_form" id="intro_form">
+                <form method="POST" class="intro_form" id="intro_form">
                   <div class="d-flex flex-row align-items-start justify-content-between flex-wrap">
-                    <input type="text" class="intro_input" placeholder="Your Name" required="required" />
-                    <input type="email" class="intro_input" placeholder="Your E-mail" required="required" />
-                    <input type="tel" class="intro_input" placeholder="Your Phone" required="required" />
-                    <select class="intro_select intro_input" required>
-                      <option disabled="" selected="" value="">Service</option>
-                      <option>Abdominoplasty</option>
-                      <option>Acne Scars Treatment</option>
-                      <option>Blepharoplasty</option>
-                      <option>Botox injections</option>
-                      <option>Breast Augmentation</option>
-                      <option>Breast reduction surgery</option>
-                      <option>Burn Wound Management</option>
-                      <option>Cleft Lip & Palate Surgery</option>
-                      <option>Cosmetic & Reconstructive Surgery</option>
-                      <option>Facelift</option>
-                      <option>Facial Fillers</option>
-                      <option>Facial Rejuvenation</option>
-                      <option>Gynecomastia or Male Breast reduction surgery</option>
-                      <option>Hair Transplant</option>
-                      <option>Lip Augmentation</option>
-                      <option>Lip Reduction Surgery</option>
-                      <option>Liposuction</option>
-                      <option>PRP Therapy</option>
-                      <option>Rhinoplasty</option>
-                      <option>Skin Whitening Injections</option>
-                    </select>
-                    <select class="intro_select intro_input" required="required">
-                      <option disabled="" selected="" value="">Time</option>
-                      <option>Morning</option>
-                      <option>Evening</option>
-                    </select>
-                    <input
-                      type="text"
-                      id="datepicker"
-                      class="intro_input datepicker"
-                      placeholder="Date"
-                      required="required"
-                    />
+                    
+                      {{appointment_form}}
+                      {% csrf_token %}
+      
+
                   </div>
                   <button id="myBtn" class="button button_1 intro_button trans_200">make an appointment</button>
 
-                  <div id="myModal" class="modal">
-                    <div class="modal-content">
-                      <span class="close">&times;</span>
-                      <p>This feature is not yet available. Sorry for inconvenience.</p>
-                    </div>
-                  </div>
+                  {% if a_html %}
+							  {{a_html|safe}}
+              {% endif %}
+              
                 </form>
               </div>
             </div>

@@ -32,15 +32,15 @@
 						<form method="POST" class="contact_form" id="contact_form">
 							
 							<div class="d-flex flex-row align-items-start justify-content-between flex-wrap">
-								{{form}}
+								{{appointment_form}}
 								{% csrf_token %}
 							</div>
 
 
 							<button type="submit" id="myBtn" class="button button_1 contact_button trans_200">make an appointment</button>
 
-							{% if html %}
-							  {{html|safe}}
+							{% if a_html %}
+							  {{a_html|safe}}
 							{% endif %}
 
 						</form>
