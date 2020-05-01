@@ -1,0 +1,1 @@
+web: gunicorn doctor_website.wsgi.application --log-file -
