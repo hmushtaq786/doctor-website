@@ -28,7 +28,7 @@ SECRET_KEY = key_file.read()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['safe-tundra-11718.herokuapp.com']
 
 
 # Application definition
