@@ -28,7 +28,7 @@ SECRET_KEY = key_file.read()
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['safe-tundra-11718.herokuapp.com']
+ALLOWED_HOSTS = ['safe-tundra-11718.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'doctor_website.urls'
@@ -126,7 +126,7 @@ USE_TZ = True
 
 # STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
-STATIC_ROOT = STATIC_DIR
+# STATIC_ROOT = STATIC_DIR
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
@@ -135,3 +135,12 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+file_handle = open("password.txt", "r")
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'connectico.mail@gmail.com'
+EMAIL_HOST_PASSWORD = file_handle.read()
