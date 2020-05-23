@@ -48,7 +48,6 @@ requests-oauthlib==1.0.0
 scikit-learn==0.22
 scipy==1.4.0
 serious==1.0.0.dev20
-SimpleWebSocketServer==0.1.0
 singledispatch==3.4.0.3
 six==1.12.0
 soupsieve==1.9.4
