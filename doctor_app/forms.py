@@ -14,7 +14,7 @@ class AppointmentForm(forms.ModelForm):
         attrs={'class': 'contact_input', 'placeholder': 'Your name'}))
 
     email = forms.EmailField(label=False, required=True, widget=forms.TextInput(
-        attrs={'class': 'contact_input', 'placeholder': 'Your email'}))
+        attrs={'id': 'appointment_email', 'class': 'contact_input', 'placeholder': 'Your email'}))
 
     phone_number = forms.CharField(label=False, required=True, widget=forms.TextInput(
         attrs={'class': 'contact_input', 'placeholder': 'Your phone number'}))
@@ -33,7 +33,7 @@ class AppointmentForm(forms.ModelForm):
 class SubscriberForm(forms.ModelForm):
 
     email = forms.EmailField(label=False, required=True, widget=forms.TextInput(
-        attrs={'class': 'newsletter_input', 'placeholder': 'Your email', 'required': "required"}))
+        attrs={'id': 'newsletter_email', 'class': 'newsletter_input', 'placeholder': 'Your email', 'required': "required"}))
 
     class Meta:
         model = Subscriber
