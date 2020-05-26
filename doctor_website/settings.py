@@ -160,7 +160,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media-files')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles')
 
 file_handle = open("password.txt", "r")
 
