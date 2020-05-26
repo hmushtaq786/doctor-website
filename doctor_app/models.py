@@ -21,7 +21,7 @@ class ClientTestimonial(models.Model):
     client_testimonial = models.TextField(
         verbose_name='Client testimonial', blank=True)
     client_picture = models.ImageField(
-        verbose_name='Client picture', upload_to='clients/', blank=True, default='blogs/default-client.png')
+        verbose_name='Client picture', upload_to='blogs/', blank=True, default='blogs/default-client.png')
 
     def __str__(self):
         return self.client_name
