@@ -27,7 +27,7 @@ key_file = open("key.txt", "r")
 SECRET_KEY = key_file.read()
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['safe-tundra-11718.herokuapp.com',
                  '127.0.0.1', 'www.drimranadeel.com']
