@@ -389,7 +389,7 @@ def email_template(instance):
                             <a
                               target="_blank"
                               style="text-decoration: none; color: #f8f9fb; display: block; padding: 12px 10px 10px;"
-                              href="http://127.0.0.1:8000/admin/"
+                              href="http://www.drimranadeel.com/admin/"
                               >See More</a
                             >
                           </td>
