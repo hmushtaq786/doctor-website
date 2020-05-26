@@ -98,7 +98,7 @@ WSGI_APPLICATION = 'doctor_website.wsgi.application'
 
 #     }
 
-}
+# }
 
 DATABASES = {
     'default': {
