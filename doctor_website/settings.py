@@ -80,32 +80,32 @@ WSGI_APPLICATION = 'doctor_website.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
+# DATABASES = {
 
-    'default': {
+#     'default': {
 
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
 
-        'NAME': 'd8mtt5cjpe9mtf',
+#         'NAME': 'd8mtt5cjpe9mtf',
 
-        'USER': 'itibrkxfyhjuhz',
+#         'USER': 'itibrkxfyhjuhz',
 
-        'PASSWORD': 'f9e38e2e978a4f6f94f49d9accd7812df8a488f2bdbfd3608adc328f0e9c7dcb',
+#         'PASSWORD': 'f9e38e2e978a4f6f94f49d9accd7812df8a488f2bdbfd3608adc328f0e9c7dcb',
 
-        'HOST': 'ec2-52-207-25-133.compute-1.amazonaws.com',
+#         'HOST': 'ec2-52-207-25-133.compute-1.amazonaws.com',
 
-        'PORT': '5432',
+#         'PORT': '5432',
 
-    }
+#     }
 
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 db_from_env = dj_database_url.config(conn_max_age=600)
 DATABASES['default'].update(db_from_env)
