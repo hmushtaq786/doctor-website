@@ -4,7 +4,6 @@ from django.apps import apps
 import datetime
 from django.db.models.signals import post_save, post_init
 from django.core.mail import send_mail
-from post_office import mail
 import threading
 # Create your models here.
 
