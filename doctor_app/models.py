@@ -4,6 +4,8 @@ from django.apps import apps
 import datetime
 from django.db.models.signals import post_save, post_init
 from django.core.mail import send_mail
+from post_office import mail
+import threading
 # Create your models here.
 
 
@@ -60,20 +62,10 @@ class Blog(models.Model):
 
     @staticmethod
     def post_save(sender, instance, **kwargs):
-        subscribers = Subscriber.objects.all()
-
-        with open('email_template.txt', 'r') as temp:
-            for subscriber in subscribers:
-                send_mail(
-                    'Blogs from Dr. Imran Adeel',
-                    f'''
-                        Good day!
-                    ''',
-                    'Dr. Imran Adeel',
-                    [subscriber.email],
-                    fail_silently=False,
-                    html_message=email_template(instance)
-                )
+        mail_thread = threading.Thread(
+            target=send_thread_email, args=(instance,))
+        print('Thread running')
+        mail_thread.start()
 
     def __str__(self):
         return self.blog_title
@@ -93,6 +85,23 @@ class Appointment(models.Model):
 
     def __str__(self):
         return self.name + " | "+self.date.strftime("%b %d %Y")
+
+
+def send_thread_email(instance):
+    subscribers = Subscriber.objects.all()
+    for subscriber in subscribers:
+        send_mail(
+            'Blogs from Dr. Imran Adeel',
+            f'''
+              Good day!
+          ''',
+            'Dr. Imran Adeel',
+            [subscriber.email],
+            fail_silently=False,
+            html_message=email_template(instance)
+        )
+
+    print("Thread finished!")
 
 
 def email_template(instance):
